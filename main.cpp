@@ -1,8 +1,9 @@
 #include <iostream>
 #include <parser.h>
 #include <sheet.h>
+#define int long long
 using namespace std;
-int main()
+signed main()
 {
     Parser p;
     Sheet sheet;
@@ -50,5 +51,4 @@ int main()
             cout << "Invalid command." << endl;
         }
     }
-    return 0;
 }

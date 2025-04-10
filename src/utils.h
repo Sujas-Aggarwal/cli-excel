@@ -14,4 +14,5 @@ public:
     static void displayWarning(const string &message);
     static void displayDebug(const string &message);
     static string convertRowToString(int row);
+    static string paddedText(const string &text, int width = 10, char fillChar = ' ');
 };

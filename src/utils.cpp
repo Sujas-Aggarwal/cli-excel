@@ -10,33 +10,33 @@ void Utils::clearScreen()
 void Utils::pause()
 {
     cout << "Press Enter to continue...";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    cin.get();
+    // cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    // cin.get();
 };
 
 void Utils::displayError(const string &message)
 {
-    cout << "\033[31mError: " << message << "\033[0m" << endl; // ANSI escape code for red text
+    cout << "\033[31mError: " << message << "\033[0m"; // ANSI escape code for red text
 };
 
 void Utils::displaySuccess(const string &message)
 {
-    cout << "\033[32mSuccess: " << message << "\033[0m" << endl; // ANSI escape code for green text
+    cout << "\033[32mSuccess: " << message << "\033[0m"; // ANSI escape code for green text
 };
 
 void Utils::displayInfo(const string &message)
 {
-    cout << "\033[34mInfo: " << message << "\033[0m" << endl; // ANSI escape code for blue text
+    cout << "\033[34m" << message << "\033[0m"; // ANSI escape code for blue text
 };
 
 void Utils::displayWarning(const string &message)
 {
-    cout << "\033[33mWarning: " << message << "\033[0m" << endl; // ANSI escape code for yellow text
+    cout << "\033[33m" << message << "\033[0m"; // ANSI escape code for yellow text
 };
 
 void Utils::displayDebug(const string &message)
 {
-    cout << "\033[35mDebug: " << message << "\033[0m" << endl; // ANSI escape code for magenta text
+    cout << "\033[35m" << message << "\033[0m"; // ANSI escape code for magenta text
 };
 
 string Utils::convertRowToString(int row)
@@ -50,4 +50,16 @@ string Utils::convertRowToString(int row)
         row = (row - 1) / 26;
     }
     return result;
+}
+string Utils::paddedText(const string &text, int width, char fillChar)
+{
+    string sol = text;
+    if (sol.length() >= width)
+    {
+        sol = sol.substr(0, width-3); // Truncate if longer than width
+        sol += "..."; // Add ellipsis if truncated
+        return sol;
+    }
+    sol += string(width - text.length(), fillChar);
+    return sol.substr(0, width); // Ensure the text is not longer than the width
 };
